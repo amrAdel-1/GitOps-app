@@ -24,8 +24,7 @@ jobs:
         run: |
           git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/amrAdel-1/GitOps-config config-repo
           cd config-repo
-          sed -i "s|image: .*\/gitops-app:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/gitops-app:${{ github.sha }}|" \
-            apps/base/deployment.yaml
+          sed -i "s|image: amradel2002/gitops-app:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/gitops-app:${{ github.sha }}|" apps/base/deployment.yaml
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
           git add .
