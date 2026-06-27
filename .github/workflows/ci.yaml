@@ -27,8 +27,9 @@ jobs:
           sed -i "s|image: amradel2002/gitops-app:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/gitops-app:${{ github.sha }}|" config-repo/apps/base/deployment.yaml
           echo "=== AFTER ===" && cat config-repo/apps/base/deployment.yaml | grep image
           cd config-repo
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/amrAdel-1/GitOps-config
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
           git add .
           git commit -m "chore: update image tag to ${{ github.sha }}"
-          git push
+          git push origin master
