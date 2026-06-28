@@ -24,7 +24,7 @@ jobs:
 
       - name: Update image tag in gitops-config
         env:
-          GH_TOKEN: ${{ secrets.GH_PA }}
+          GH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         run: |
           git clone https://amrAdel-1:$GH_TOKEN@github.com/amrAdel-1/GitOps-config config-repo
           echo "=== BEFORE ===" && cat config-repo/apps/base/deployment.yaml | grep image
